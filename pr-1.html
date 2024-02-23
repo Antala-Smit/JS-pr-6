@@ -1,0 +1,144 @@
+<table align="center" , border="1">
+    <tr align="center">
+        <td style="padding: 15px;">Id</td>
+        <td style="padding: 15px;">Name</td>
+        <td style="padding: 15px;">Email</td>
+        <td style="padding: 15px;">Phone</td>
+        <td style="padding: 15px;">City</td>
+        <td style="padding: 15px;">Degi.</td>
+        <td style="padding: 15px;">Dep.</td>
+        <td style="padding: 15px;">Salary</td>
+    </tr>
+    <tbody id="record"></tbody>
+</table>
+
+<script type="text/javascript">
+    let data = [{
+            id: 1,
+            name: "Ashish",
+            email: "ashu@gmail.com",
+            phone: "1121212",
+            city: "Surat",
+            salary: 20000,
+            degi: "senior",
+            dep: "programming",
+        }, {
+            id: 2,
+            name: "Hari",
+            email: "hari@gmail.com",
+            phone: "5454545",
+            city: "Surat",
+            salary: 22000,
+            degi: "junior",
+            dep: "ui/ux",
+        }, {
+            id: 3,
+            name: "Raj",
+            email: "raj@gmail.com",
+            phone: "454545",
+            city: "Vadodara",
+            salary: 25000,
+            degi: "junior",
+            dep: "bde",
+        }, {
+            id: 4,
+            name: "Deep",
+            email: "deep@gmail.com",
+            phone: "565656",
+            city: "Vapi",
+            salary: 30000,
+            degi: "tl",
+            dep: "webdesign",
+        }, {
+            id: 5,
+            name: "Jay",
+            email: "jay@gmail.com",
+            phone: "5565656",
+            city: "Rajkot",
+            salary: 24000,
+            degi: "senior",
+            dep: "programming",
+        }, {
+            id: 6,
+            name: "Ajay",
+            email: "ajay@gmail.com",
+            phone: "451547513",
+            city: "Vadodara",
+            salary: 23000,
+            degi: "senior",
+            dep: "webdesign",
+        }, {
+            id: 7,
+            name: "Vijay",
+            email: "vijay@gmail.com",
+            phone: "1325546",
+            city: "Vapi",
+            salary: 30000,
+            degi: "manager",
+            dep: "ui/ux",
+        }, {
+            id: 8,
+            name: "Sanjay",
+            email: "sanjay@gmail.com",
+            phone: "1354568",
+            city: "Surat",
+            salary: 24000,
+            degi: "tl",
+            dep: "webdesign",
+        }, {
+            id: 9,
+            name: "Mayur",
+            email: "mayur@gmail.com",
+            phone: "1351688",
+            city: "Surat",
+            salary: 20000,
+            degi: "tl",
+            dep: "ui/ux",
+        }, {
+            id: 10,
+            name: "Mohit",
+            email: "mohit@gmail.com",
+            phone: "3215484",
+            city: "Ahmedabad",
+            salary: 18000,
+            degi: "junior",
+            dep: "bdl",
+        },
+
+    ]
+    let tbl = "";
+
+    let datafilter = data.filter((val) => {
+        return (val.city == "Surat" || val.city == "Vapi") && (val.salary > 22000) && (val.dep == "webdesign") && (val.degi == "tl")
+    })
+    var s = 0
+    var sum = datafilter.filter((val) => {
+        s = s + val.salary;
+    })
+
+    datafilter.map((val, i) => {
+        i = i + 1
+        return (
+            tbl += `
+                <tr>
+                    <td>${val.id}</td>
+                    <td>${val.name}</td>
+                    <td>${val.email}</td>
+                    <td>${val.phone}</td>
+                    <td>${val.city}</td>
+                    <td>${val.degi}</td>
+                    <td>${val.dep}</td>  
+                    <td>${val.salary}</td>  
+                </tr>
+            `
+        )
+    })
+    tbl += `
+            <tr>
+                <td colspan="7">Total :- </td>
+                <td>${s}</td>    
+            </tr>
+        `
+    document.getElementById('record').innerHTML = tbl;
+    document.getElementById('sum').innerHTML = s;
+</script>
